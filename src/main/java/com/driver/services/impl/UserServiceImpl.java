@@ -63,13 +63,13 @@ public class UserServiceImpl implements UserService {
             user.setConnected(false);
             user.setOriginalCountry(country);
 
-            String IPAddress=country.getCode()+userRepository3.save(user).getId();
+            String IPAddress=country.getCode()+"."+userRepository3.save(user).getId();
             user.setOriginalIp(IPAddress);
 
             userRepository3.save(user);
             return user;
         }else
-            throw new Exception("Country Not Found");
+            throw new Exception("Country not found");
     }
 
     @Override

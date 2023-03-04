@@ -23,12 +23,12 @@ public class ConnectionServiceImpl implements ConnectionService {
     public User connect(int userId, String countryName) throws Exception{
         User user = userRepository2.findById(userId).get();
         if(user.getMaskedIp()!=null){
-           throw new Exception("Already Connected");
+           throw new Exception("Already connected");
        }else if(countryName.equalsIgnoreCase(user.getOriginalCountry().getCountryName().toString())){
            return user;
        }else {
             if (user.getServiceProviderList() == null) {
-                throw new Exception("Unable To Connect");
+                throw new Exception("Unable to connect");
             }
             List<ServiceProvider> serviceProviderList = user.getServiceProviderList();
             int min = Integer.MAX_VALUE;
@@ -53,7 +53,7 @@ public class ConnectionServiceImpl implements ConnectionService {
 
                 String countryCode = country.getCode();
                 int providerId = serviceProvider.getId();
-                String masked = countryCode + providerId + userId;
+                String masked = countryCode +"."+ providerId +"."+ userId;
 
                 user.setConnected(true);
                 user.setMaskedIp(masked);
@@ -73,7 +73,7 @@ public class ConnectionServiceImpl implements ConnectionService {
     public User disconnect(int userId) throws Exception {
         User user =userRepository2.findById(userId).get();
         if(!(user.getConnected())){
-            throw new Exception("Disconnected");
+            throw new Exception("Already disconnected");
         }
         user.setConnected(false);
         user.setMaskedIp(null);
@@ -111,22 +111,22 @@ public class ConnectionServiceImpl implements ConnectionService {
                 }
                 User user = connect(senderId, countryName);
                 if (!user.getConnected()) {
-                    throw new Exception("Connection cannot be establish");
+                    throw new Exception("Cannot establish communication");
                 } else {
                     return user;
                 }
             }
         }else{
             if(receiver.getOriginalCountry().equals(sender.getOriginalCountry())) return sender;
-            else{
+
                 String countryName=receiver.getOriginalCountry().getCountryName().toString();
                 User user =connect(senderId,countryName);
                 if(!user.getConnected()){
-                    throw new Exception("Connection cannot be establish");
+                    throw new Exception("Cannot establish communication");
                 }else{
                     return user;
                 }
-            }
+
         }
     }
 }

@@ -23,10 +23,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User register(String username, String password, String countryName) throws Exception{
+        //create obj
+        User user=new User();
         if(countryName.equalsIgnoreCase("aus")||countryName.equalsIgnoreCase("ind")||countryName.equalsIgnoreCase("jpn")||
         countryName.equalsIgnoreCase("chi")||countryName.equalsIgnoreCase("usa")){
-            //create obj
-            User user=new User();
+
+
             //set attributes
             user.setPassword(password);
             user.setUsername(username);
@@ -67,7 +69,7 @@ public class UserServiceImpl implements UserService {
             userRepository3.save(user);
             return user;
         }else
-            throw new Exception("Not Found");
+            throw new Exception("Country Not Found");
     }
 
     @Override

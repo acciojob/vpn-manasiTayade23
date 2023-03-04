@@ -45,7 +45,7 @@ public class AdminServiceImpl implements AdminService {
         //set attributes
         serviceProvider.setName(providerName);
         serviceProvider.setAdmin(admin);
-        admin.getServiceProviderList().add(serviceProvider);
+        admin.getServiceProviders().add(serviceProvider);
 
         //save to db
         adminRepository1.save(admin);

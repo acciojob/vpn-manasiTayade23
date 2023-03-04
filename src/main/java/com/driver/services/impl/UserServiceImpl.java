@@ -59,7 +59,7 @@ public class UserServiceImpl implements UserService {
             //set attributes
             country.setUser(user);
             user.setConnected(false);
-            user.setCountry(country);
+            user.setOriginalCountry(country);
 
             String IPAddress=country.getCode()+userRepository3.save(user).getId();
             user.setOriginalIp(IPAddress);
@@ -76,7 +76,7 @@ public class UserServiceImpl implements UserService {
         ServiceProvider serviceProvider=serviceProviderRepository3.findById(serviceProviderId).get();
 
         serviceProvider.getUserList().add(user);
-        user.getServiceProviderList().add(serviceProvider);
+        user.getUsers().add(serviceProvider);
 
         serviceProviderRepository3.save(serviceProvider);
 

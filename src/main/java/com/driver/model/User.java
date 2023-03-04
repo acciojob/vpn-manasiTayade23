@@ -82,7 +82,7 @@ public class User {
     
     @ManyToMany
     @JoinColumn
-    private List<ServiceProvider> Users =new ArrayList<>();
+    private List<ServiceProvider> serviceProviderList =new ArrayList<>();
 
     public Country getOriginalCountry() {
         return OriginalCountry;
@@ -100,11 +100,11 @@ public class User {
         this.connectionList = connectionList;
     }
 
-    public List<ServiceProvider> getUsers() {
-        return Users;
+    public List<ServiceProvider> getServiceProviderList() {
+        return serviceProviderList;
     }
 
-    public void setUsers(List<ServiceProvider> users) {
-        this.Users = users;
+    public void setServiceProviderList(List<ServiceProvider> serviceProviderList) {
+        this.serviceProviderList = serviceProviderList;
     }
 }

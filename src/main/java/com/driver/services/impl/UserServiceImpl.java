@@ -75,8 +75,8 @@ public class UserServiceImpl implements UserService {
         User user=userRepository3.findById(userId).get();
         ServiceProvider serviceProvider=serviceProviderRepository3.findById(serviceProviderId).get();
 
-        serviceProvider.getUserList().add(user);
-        user.getUsers().add(serviceProvider);
+        serviceProvider.getUsers().add(user);
+        user.getServiceProviderList().add(serviceProvider);
 
         serviceProviderRepository3.save(serviceProvider);
 

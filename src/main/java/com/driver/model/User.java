@@ -14,7 +14,7 @@ public class User {
     private String password;
     private String originalIp;
     private String maskedIp;
-    private boolean Connected;
+    private boolean connected;
 
     public int getId() {
         return id;
@@ -57,11 +57,11 @@ public class User {
     }
 
     public boolean getConnected() {
-        return Connected;
+        return connected;
     }
 
     public void setConnected(boolean connected) {
-        Connected = connected;
+        this.connected = connected;
     }
 
 

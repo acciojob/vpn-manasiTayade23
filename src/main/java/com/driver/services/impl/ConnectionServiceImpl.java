@@ -38,7 +38,7 @@ public class ConnectionServiceImpl implements ConnectionService {
             for (ServiceProvider sp : serviceProviderList) {
                 List<Country> countryList = sp.getCountryList();
                 for (Country c : countryList) {
-                    if (countryName.equalsIgnoreCase(country.getCountryName().toString()) && min > sp.getId()) {
+                    if (countryName.equalsIgnoreCase(c.getCountryName().toString()) && min > sp.getId()) {
                         min = sp.getId();
                         country = c;
                         serviceProvider = sp;

@@ -35,26 +35,26 @@ public class UserServiceImpl implements UserService {
 
             Country country=new Country();
 
-            if(countryName.equalsIgnoreCase("ind")){
+            if(countryName.equalsIgnoreCase("IND")){
                 country.setCode(CountryName.IND.toCode());
                 country.setCountryName(CountryName.IND);
             }
 
-            if(countryName.equalsIgnoreCase("jpn")){
+            if(countryName.equalsIgnoreCase("JPN")){
                 country.setCountryName(CountryName.JPN);
                 country.setCode(CountryName.JPN.toCode());
             }
 
-            if(countryName.equalsIgnoreCase("chi")){
+            if(countryName.equalsIgnoreCase("CHI")){
                 country.setCode(CountryName.CHI.toCode());
                 country.setCountryName(CountryName.CHI);
             }
 
-            if(countryName.equalsIgnoreCase("aus")){
+            if(countryName.equalsIgnoreCase("AUS")){
                 country.setCountryName(CountryName.AUS);
                 country.setCode(CountryName.AUS.toCode());
             }
-            if(countryName.equalsIgnoreCase("usa")){
+            if(countryName.equalsIgnoreCase("USA")){
                 country.setCode(CountryName.USA.toCode());
                 country.setCountryName(CountryName.USA);
             }
@@ -67,9 +67,10 @@ public class UserServiceImpl implements UserService {
             user.setOriginalIp(IPAddress);
 
             userRepository3.save(user);
-            return user;
+
         }else
             throw new Exception("Country not found");
+        return user;
     }
 
     @Override
